@@ -1,0 +1,52 @@
+<DOCTYPE! html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FLAMES</title>
+	<script type="text/javascript" src="extr.js"></script>
+	<link rel="stylesheet" href="design.css">
+  <style>
+    p{color: deeppink;
+  font-size: 20px;
+  text-align: center;
+}
+  </style>
+	
+</head>
+<body>
+<div class="center">
+<form method="POST" name="google-sheet">
+    <label for="fname">Your Name</label><br>
+    <input type="text" id="myText1" name="Fname" placeholder="Your name.."><br><br>
+
+    <label for="lname">Crush or Partner's Name</label>
+    <br>
+    <input type="text" id="myText2" name="Lname" placeholder="Your partner's name.."><br><br>
+
+    <input type="submit" value="Submit" name="submit"><br>
+</form>
+
+<p>Click the button to Get the result</p>
+
+<button onclick="myFunction()">FIND IT</button>
+
+<p id="demo"></p>
+
+</div>
+
+<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyw7fY7YQ0CQPl3OKdo-cZLJRqXNVuVrmjLo44R6VKMOhC4V9cQpuxn6Qs3u0blGhEC/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Click on FIND IT to find the result"))
+                .catch(error => console.error("Can't be calculated......Try Refreshing the webpage", error.message))
+            })
+          </script>
+
+</body>
+</html>
